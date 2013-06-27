@@ -1,0 +1,418 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+/** Basic **/
+
+@import "base.scss";
+@import "../font/fonte.css";
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  color: $colorDarkGreen;
+  height:100%;
+  overflow-x:hidden;
+  font: {
+    family: pt_sansregular;
+    weight: normal;
+    size: 16px;
+  }
+}
+
+/** Top bar/header/navigation **/
+nav {
+  position: fixed;
+  z-index: 20;
+  width: 100%;
+  top: 0px;
+  left: 0%;
+  height: $heightNav+17px;
+  background: {
+    image: url("../img/navShadow.png");
+    repeat: no-repeat;
+    position: bottom center;
+    size: 1213px 17px;
+  }
+  @extend  .animateEaseInOut;
+
+  &.active {
+    left: 70%;
+    @extend  .animateEaseInOut;
+  }
+
+  section {
+    width: 100%;
+    height: $heightNav;
+    text-align: center;
+    @include background-image(linear-gradient($colorLightGreen, $colorDarkGreen));
+
+    .logo {
+      position: relative;
+      padding-right: 50px;
+      padding-left: 50px;
+      height: $heightNav;
+      background: {
+        image: url("../img/logo.svg");
+        repeat: no-repeat;
+        position: center 5px;
+        size: 120px auto;
+      }
+
+      img {
+        width: 120px;
+        height: auto;
+        margin: 5px 0 0 0;
+      }
+    }
+
+    /** Begge knapper **/
+    .infoBtnWrapper,
+    .navBtnWrapper {
+      position: absolute;
+      top: 0px;
+      height: $heightNav;
+      width: 50px;
+
+      .btnInfo,
+      .btnNav {
+        display: block;
+        height: $heightNav;
+        width: 49px;
+        background-color: $colorDarkGreen;
+        @extend .animateEaseInOut;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.active {
+          background-color: $colorRed;
+          @extend .animateEaseInOut;
+
+          span {
+            @extend .animateEaseInOut;
+            background: {
+              position: center -59px;
+            }
+          }
+        }
+
+        span {
+          display: block;
+          width: 49px;
+          height: $heightNav;
+          @extend .animateEaseInOut;
+          background: {
+            repeat: no-repeat;
+            position: center 5px;
+            size: auto 100px;
+          }
+        }
+      }
+    }
+
+    /** Info knap **/
+    .infoBtnWrapper {
+      right: -1px;
+      border-left: 1px solid white(0.2);
+
+      .btnInfo {
+
+        span {
+          border-left: 1px solid black(0.3);
+          background: {
+            image:url("../img/iconInfo.svg");
+          }
+        }
+      }
+    }
+
+    /** Menu knap **/
+    .navBtnWrapper {
+      left: 0%;
+      border-right: 1px solid white(0.2);
+      @extend .animateEaseInOut;
+
+      &.active {
+        left: 70%;
+        @extend .animateEaseInOut;
+      }
+
+      .btnNav {
+
+        span {
+          border-right: 1px solid black(0.3);
+          background: {
+            image:url("../img/iconMenu.svg");
+          }
+        }
+      }
+    }
+  }
+}
+
+/** Main Navigation **/
+#menu {
+  position: fixed;
+  height: 100%;
+  width: 70%;
+  z-index: 25;
+  top: 0px;
+  left: -70%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: $colorDarkGreen;
+  @include background-image(linear-gradient($colorLightGreen, $colorDarkGreen));
+  @extend .animateEaseInOut;
+
+  &.active {
+    left: 0%;
+    @extend .animateEaseInOut;
+  }
+
+  ul {
+    position: relative;
+
+    li {
+      border-bottom: 1px solid $colorWhite;
+
+      &:last-child {
+        border-bottom: 0px;
+      }
+
+      a {
+        display: block;
+        padding:10px 10px 8px 10px;
+        color: $colorWhite;
+        text-decoration: none;
+        /*@include background-image(linear-gradient($colorLightGreen, $colorDarkGreen));*/
+        @include text-shadow(rgba($colorBlack, 0.5) 0px -1px 0);
+      }
+    }
+  }
+}
+
+
+/** Info box **/
+#info {
+  position: fixed;
+  z-index: 15;
+  width: 90%;
+  height: 85%;
+  top: -100%;
+  right:0%;
+  margin-right: 0%;
+  background-color: $colorDarkGreen;
+  color: $colorWhite;
+  text-align: left;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 10% 5% 5% 5%;
+  @extend .animateEaseInOut;
+  @include box-shadow(rgba($colorBlack, 1.0) 0px 0px 50px);
+  /*@include border-radius(10px);*/
+
+  &.active {
+    top: 40px;
+    @extend .animateEaseInOut;
+  }
+
+  .bar {
+    position: fixed;
+    top: 380px;
+    left: 0px;
+    height: 20px;
+    width: 100%;
+    background-color: $colorDarkGreen;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin: 0 0 0px 0;
+  }
+
+  p {
+    margin: 15px 0 0 0;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    padding: 13px 0 10px 0;
+    margin: 30px 0 20px 0;
+    text-align: center;
+    border: 2px solid $colorWhite;
+    color: $colorDarkerGreen;
+    background-color: $colorWhite;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: pt_sansbold;
+    @include border-radius(5px);
+  }
+}
+
+
+/** video items **/
+.contentWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: $heightNav+17px;
+  left: 0%;
+  overflow-x:hidden;
+  background: {
+    image: url("../img/bg.jpg");
+    position: top left;
+    attachment: fixed;
+  }
+  @include box-shadow(rgba($colorBlack, 0.5) 0px 0px 20px);
+  @extend .animateEaseInOut;
+
+  &.active {
+    left: 70%;
+    @extend .animateEaseInOut;
+  }
+}
+
+section.items {
+   position: relative;
+   z-index: 10;
+   max-width: 1024px;
+   margin: 0 auto 0 auto;
+
+   &.first {
+     margin-top:$heightNav+30px;
+   }
+
+   header {
+     color: $colorDarkGreen;
+     margin: 10px 0 35px 0;
+     text:{
+       transform: uppercase;
+       align: center;
+     }
+     font: {
+       size: 30px;
+       family: pt_sansbold;
+     }
+     color: $colorBlack;
+     @include text-shadow(rgba($colorWhite, 1.0) 0px 1px 0);
+
+     h1 {
+       display: inline-block;
+       padding: 0 15px 0 15px;
+       background-image: url("../img/bg.jpg");
+     }
+
+     hr {
+       margin: -18px 0 0 0;
+       color: $colorDarkGreen;
+       @include box-shadow(rgba($colorWhite, 1.0) 0px 1px 0);
+     }
+   }
+
+   article {
+     position: relative;
+     width: 90%;
+     padding: 15px 3% 15px 3%;
+     margin: 0 2% 20px 2%;
+     @include border-radius(10px);
+     @include background-image(linear-gradient($colorWhite, $colorLightGry));
+     @include box-shadow(rgba($colorBlack, 0.2) 0px 0px 8px);
+
+     .itemHeader {
+       position: relative;
+       padding: 0 0 10px 0;
+
+       h2 {
+         color: $colorLightGreen;
+         text-transform: uppercase;
+         font-size: 25px;
+         margin: 0 0 10px 0;
+         padding: 0 0 0 51px;
+         height: 41px;
+         background: {
+           size: 41px auto;
+         }
+
+         &.vasktor {
+           font-size: 14px;
+           padding: 0 0 0 97px;
+           background: {
+             image: url(../img/iconer.svg), url(../img/iconer.svg);
+           }
+         }
+
+         &.komOvnEm {
+           font-size: 16px;
+           padding: 0 0 0 142px;
+           background: {
+             image: url(../img/iconer.svg), url(../img/iconer.svg), url(../img/iconer.svg);
+           }
+         }
+
+         @extend .iconSprite;
+         @include text-shadow(rgba($colorWhite, 1.0) 0px 1px 0);
+
+         p {
+           display: block;
+           color: #333333;
+           font-size: 13px;
+           text-transform: lowercase;
+           font-family: pt_sansregular;
+         }
+       }
+
+       p {
+         color: $colorBlack;
+       }
+     }
+
+     video {
+       width: 98%;
+       height: auto;
+       border: 3px solid $colorWhite;
+       @include border-radius(5px);
+       @include box-shadow(rgba($colorBlack, 0.3) 0px 0px 3px);
+       display: none;
+     }
+
+     a {
+       position: relative;
+       display: block;
+       height: auto;
+       border: 3px solid $colorWhite;
+       overflow: hidden;
+       @include border-radius(5px);
+       @include box-shadow(rgba($colorBlack, 0.3) 0px 0px 3px);
+
+       span {
+         display: block;
+         position: absolute;
+         top: 50%;
+         margin-top: -50px;
+         left: 50%;
+         margin-left: -50px;
+         width: 100px;
+         height: 100px;
+         background: {
+           image: url("../img/iconPlay.svg");
+           repeat: no-repeat;
+           position: center center;
+           size: 100px 100px;
+         }
+       }
+
+       img {
+         display: block;
+         width: 100%;
+         height: auto;
+       }
+     }
+   }
+ }

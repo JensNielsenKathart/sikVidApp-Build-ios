@@ -25,6 +25,10 @@ body {
   }
 }
 
+.dnone {
+  display: none;
+}
+
 /** Top bar/header/navigation **/
 nav {
   position: fixed;
@@ -60,7 +64,7 @@ nav {
       background: {
         image: url("../img/logo.svg");
         repeat: no-repeat;
-        position: center 5px;
+        position: 43% 5px;
         size: 120px auto;
       }
 

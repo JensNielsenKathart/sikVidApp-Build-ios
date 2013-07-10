@@ -4,10 +4,10 @@
     id        = "dk.kathart.sikvideo"
     version   = "1.0.0">
 
-<name>Sikkerhedsstyrelsen - video App - iOS</name>
+<name>Sikkerhedsstyrelsen - Uden autorisation</name>
 
 <description>
-Sikkerhedsstyrelsen - Video app - iOS
+Sikkerhedsstyrelsen - Uden autorisation - Video app
 </description>
 
 <author href="https://www.kathart.dk" email="jens@kathart.dk.com">
